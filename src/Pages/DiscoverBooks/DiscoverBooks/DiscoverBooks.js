@@ -19,22 +19,12 @@ import {
     useRouteMatch
 } from "react-router-dom";
 import { Button } from '@mui/material';
-import MakeReview from '../MakeReview/MakeReview';
-import Pay from '../Pay/Pay';
-import DashBoardHome from '../DashBoardHome/DashBoardHome';
-import useAuth from './../../../hooks/useAuth';
-import AddaProduct from '../AddaProduct/AddaProduct';
-import MakeAdmin from '../MakeAdmin/MakeAdmin';
-import ManageProducts from '../ManageProducts/ManageProducts';
-import AdminRoute from '../../Login/AdminRoute/AdminRoute';
 
 const drawerWidth = 200;
 
 const DiscoverBooks = () => {
-      const { logout } = useAuth();
       const { window } = props;
       const [mobileOpen, setMobileOpen] = React.useState(false);
-      const { admin } = useAuth();
       let { path, url } = useRouteMatch();
       const handleDrawerToggle = () => {
             setMobileOpen(!mobileOpen);
@@ -44,25 +34,13 @@ const DiscoverBooks = () => {
             <div>
                   <Toolbar />
                   
-
-                  {admin? 
                   <List>
-                  <Link style={{textDecoration:'none', color:'black'}} to="/home"><ListItem button>Home</ListItem></Link>
-                  <Link style={{textDecoration:'none', color:'black'}} to={`${url}`}><ListItem button>Manage All Orders</ListItem></Link>
-                  <Link style={{textDecoration:'none', color:'black'}} to={`${url}/addaproduct`}><ListItem button>Add a Product</ListItem></Link>
-                  <Link style={{textDecoration:'none', color:'black'}} to={`${url}/makeadmin`}><ListItem button>Make Admin</ListItem></Link>
-                  <Link style={{textDecoration:'none', color:'black'}} to={`${url}/manageproducts`}><ListItem button>Manage Products</ListItem></Link>
-                  </List>:
-                  <List>
-                  <Link style={{textDecoration:'none', color:'black'}} to="/home"><ListItem button>Home</ListItem></Link>
-                  <Link style={{textDecoration:'none', color:'black'}} to={`${url}`}><ListItem button>My Orders</ListItem></Link>
-                  <Link style={{textDecoration:'none', color:'black'}} to={`${url}/review`}><ListItem button>Review</ListItem></Link>
-                  <Link style={{textDecoration:'none', color:'black'}} to={`${url}/pay`}><ListItem button>Payment</ListItem></Link>
+                        <Link style={{textDecoration:'none', color:'black'}} to="/"><ListItem button>Discover Books</ListItem></Link>
+                        <Link style={{textDecoration:'none', color:'black'}} to={`${url}/readingbooks`}><ListItem button>Reading Books</ListItem></Link>
+                        <Link style={{textDecoration:'none', color:'black'}} to={`${url}/finishedbooks`}><ListItem button>Finished Books</ListItem></Link>
                   </List>
-                  }
-                  <Button onClick={logout} color="inherit"><ListItem button>Logout</ListItem></Button>
-            
-                  </div>
+
+            </div>
       );
 
       const container = window !== undefined ? () => window().document.body : undefined;
@@ -132,21 +110,12 @@ const DiscoverBooks = () => {
                     <Route exact path={path}>
                         <DashBoardHome></DashBoardHome>
                     </Route>
-                    <Route path={`${path}/review`}>
+                    <Route path={`${path}/readingbooks`}>
                         <MakeReview></MakeReview>
                     </Route>
-                    <Route path={`${path}/pay`}>
+                    <Route path={`${path}/finishedbooks`}>
                         <Pay></Pay>
                     </Route>
-                    <AdminRoute path={`${path}/addaproduct`}>
-                        <AddaProduct></AddaProduct>
-                    </AdminRoute>
-                    <AdminRoute path={`${path}/makeadmin`}>
-                        <MakeAdmin></MakeAdmin>
-                    </AdminRoute>
-                    <AdminRoute path={`${path}/manageproducts`}>
-                        <ManageProducts></ManageProducts>
-                    </AdminRoute>
                 </Switch>
             </Box>
         </Box>
