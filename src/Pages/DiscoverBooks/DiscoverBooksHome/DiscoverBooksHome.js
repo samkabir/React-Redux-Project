@@ -34,7 +34,6 @@ const BooksSection = styled.div`
       display: flex;
       flex-direction:column;
       margin: 0px 100px;
-      border: 1px solid red;
 `;
 
 export default DiscoverBooksHome;
