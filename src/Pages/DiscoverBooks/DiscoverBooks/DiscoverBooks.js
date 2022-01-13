@@ -60,7 +60,7 @@ const DiscoverBooks = (props) => {
                     <MenuIcon />
                 </IconButton>
                 <Typography variant="h6" noWrap component="div">
-                    DashBoard
+                    Discover Books !!!
                 </Typography>
                 </Toolbar>
             </AppBar>
