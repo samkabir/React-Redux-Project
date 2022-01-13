@@ -14,7 +14,7 @@ const DisplayBooks = ({book}) => {
                               <h2>{title}</h2>
                               <h3>Author: {author}</h3>
                               <h3>Publisher: {publisher}</h3>
-                              <p>{synopsis.slice(0, 500)}</p>
+                              <p>{synopsis.slice(0, 500)}...</p>
                               <h5>Page Count: {pageCount}</h5>
                         </Info>
                         <AddIcon>
