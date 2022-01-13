@@ -1,14 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
+import books from '../../../fakeData/books.json';
 import styled from 'styled-components';
 import DisplayBooks from './DisplayBooks/DisplayBooks';
 
 const DiscoverBooksHome = () => {
-      const [books, setBooks] = useState([]);
-      useEffect( () => {
-            fetch('books.json')
-                  .then(res => res.json())
-                  .then(data => setBooks(data))
-        },[]);
+      
       return (
             <div>
                   <SearchBar>
@@ -16,10 +12,7 @@ const DiscoverBooksHome = () => {
                   </SearchBar>
                   <BooksSection>
                         {
-                              books.map(book => <DisplayBooks
-                              key={book.id}
-                              book={book}
-                              ></DisplayBooks>)
+                              books.map( (book) => <DisplayBooks key={book.id} book={book} />)
                         }
                   </BooksSection>
             </div>
