@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import Books from './Books/Books';
 import styled from 'styled-components';
+import DisplayBooks from './DisplayBooks/DisplayBooks';
 
 const DiscoverBooksHome = () => {
-      const [books, setBooks] = useState();
+      const [books, setBooks] = useState([]);
       useEffect( () => {
             fetch('books.json')
                   .then(res => res.json())
@@ -15,16 +15,17 @@ const DiscoverBooksHome = () => {
                         <h2>Search Bar Coming!!!</h2>
                   </SearchBar>
                   <BooksSection>
-                  {
-                        books.map(book => <Books
+                        {
+                              books.map(book => <DisplayBooks
                               key={book.id}
                               book={book}
-                        ></Books>)
-                  }
+                              ></DisplayBooks>)
+                        }
                   </BooksSection>
             </div>
       );
 };
+
 
 const SearchBar = styled.div`
       text-align:center;
