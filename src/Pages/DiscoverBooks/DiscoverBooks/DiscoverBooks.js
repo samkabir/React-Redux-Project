@@ -6,26 +6,20 @@ import CssBaseline from '@mui/material/CssBaseline';
 import Drawer from '@mui/material/Drawer';
 import IconButton from '@mui/material/IconButton';
 import List from '@mui/material/List';
-
 import ListItem from '@mui/material/ListItem';
-
 import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import {
-    Switch,
-    Route,
     Link,
-    useRouteMatch
+    Outlet
 } from "react-router-dom";
-import { Button } from '@mui/material';
 
 const drawerWidth = 200;
 
-const DiscoverBooks = () => {
+const DiscoverBooks = (props) => {
       const { window } = props;
       const [mobileOpen, setMobileOpen] = React.useState(false);
-      let { path, url } = useRouteMatch();
       const handleDrawerToggle = () => {
             setMobileOpen(!mobileOpen);
       };
@@ -35,9 +29,9 @@ const DiscoverBooks = () => {
                   <Toolbar />
                   
                   <List>
-                        <Link style={{textDecoration:'none', color:'black'}} to="/"><ListItem button>Discover Books</ListItem></Link>
-                        <Link style={{textDecoration:'none', color:'black'}} to={`${url}/readingbooks`}><ListItem button>Reading Books</ListItem></Link>
-                        <Link style={{textDecoration:'none', color:'black'}} to={`${url}/finishedbooks`}><ListItem button>Finished Books</ListItem></Link>
+                        <Link style={{textDecoration:'none', color:'black'}} to={`/discoverbooks/`}><ListItem button>Discover Books</ListItem></Link>
+                        <Link style={{textDecoration:'none', color:'black'}} to={`/discoverbooks/readingbooks`} ><ListItem button>Reading Books</ListItem></Link>
+                        <Link style={{textDecoration:'none', color:'black'}} to={`/discoverbooks/finishedbooks`}><ListItem button>Finished Books</ListItem></Link>
                   </List>
 
             </div>
@@ -45,7 +39,7 @@ const DiscoverBooks = () => {
 
       const container = window !== undefined ? () => window().document.body : undefined;
       return (
-            <>
+        <>
             <Box sx={{ display: 'flex' }}>
             <CssBaseline />
             <AppBar
@@ -106,29 +100,18 @@ const DiscoverBooks = () => {
                 sx={{ flexGrow: 1, p: 3, width: { sm: `calc(100% - ${drawerWidth}px)` } }}
             >
                 <Toolbar />
-                <Switch>
-                    <Route exact path={path}>
-                        <DashBoardHome></DashBoardHome>
-                    </Route>
-                    <Route path={`${path}/readingbooks`}>
-                        <MakeReview></MakeReview>
-                    </Route>
-                    <Route path={`${path}/finishedbooks`}>
-                        <Pay></Pay>
-                    </Route>
-                </Switch>
+                <Outlet />
             </Box>
-        </Box>
+            </Box>
         </>
       );
 };
-
-DashBoard.propTypes = {
-      /**
-       * Injected by the documentation to work in an iframe.
-       * You won't need it on your project.
-       */
-      window: PropTypes.func,
-    };
+DiscoverBooks.propTypes = {
+    /**
+     * Injected by the documentation to work in an iframe.
+     * You won't need it on your project.
+     */
+    window: PropTypes.func,
+};
 
 export default DiscoverBooks;
