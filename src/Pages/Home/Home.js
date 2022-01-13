@@ -22,7 +22,17 @@ const Wrapper = styled.div`
 const Button = styled.button`
       padding: 10px;
       background-color: black;
+      border: none;
       color:white;
+      &:hover{
+            cursor: pointer;
+            background-color: white;
+            color: black;
+            transition-delay: 0.2s;
+            transition-duration: 0.5s;
+            transition-timing-function: linear;
+            border:1px solid black;
+      }
 `;
 
 export default Home;
