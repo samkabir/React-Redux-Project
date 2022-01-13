@@ -18,7 +18,7 @@ const DisplayBooks = ({book}) => {
                               <h5>Page Count: {pageCount}</h5>
                         </Info>
                         <AddIcon>
-                              <button><AddCircleIcon style={{fontSize: '40px'}}/></button>
+                              <button title="Add to Reading List"><AddCircleIcon style={{fontSize: '40px', display:'flex'}}/></button>
                         </AddIcon>
                   </OneBook>
             </>
@@ -30,7 +30,6 @@ const AddIcon = styled.div`
             background-color: transparent;
             border-radius:30px;
             cursor: pointer;
-            
       }
 `;
 
