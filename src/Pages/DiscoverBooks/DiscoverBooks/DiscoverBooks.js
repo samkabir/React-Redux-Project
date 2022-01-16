@@ -1,5 +1,6 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -14,14 +15,16 @@ import {
     Link,
     Outlet
 } from "react-router-dom";
+import { useSelector } from 'react-redux';
 
 const drawerWidth = 200;
 
 const DiscoverBooks = (props) => {
-      const { window } = props;
-      const [mobileOpen, setMobileOpen] = React.useState(false);
-      const handleDrawerToggle = () => {
-            setMobileOpen(!mobileOpen);
+    const { readingList } = useSelector((state) => state.books);
+    const { window } = props;
+    const [mobileOpen, setMobileOpen] = React.useState(false);
+    const handleDrawerToggle = () => {
+        setMobileOpen(!mobileOpen);
       };
 
       const drawer = (
@@ -30,8 +33,8 @@ const DiscoverBooks = (props) => {
                   
                   <List>
                         <Link style={{textDecoration:'none', color:'black'}} to={`/discoverbooks/`}><ListItem button>Discover Books</ListItem></Link>
-                        <Link style={{textDecoration:'none', color:'black'}} to={`/discoverbooks/readingbooks`} ><ListItem button>Reading Books</ListItem></Link>
-                        <Link style={{textDecoration:'none', color:'black'}} to={`/discoverbooks/finishedbooks`}><ListItem button>Finished Books</ListItem></Link>
+                        <Link style={{textDecoration:'none', color:'black'}} to={`/discoverbooks/readingbooks`} ><ListItem button>Reading Books <Counter>{readingList.length}</Counter> </ListItem></Link>
+                        <Link style={{textDecoration:'none', color:'black'}} to={`/discoverbooks/finishedbooks`}><ListItem button>Finished Books <Counter>0</Counter> </ListItem></Link>
                   </List>
 
             </div>
@@ -113,5 +116,14 @@ DiscoverBooks.propTypes = {
      */
     window: PropTypes.func,
 };
+
+const Counter = styled.div`
+    background-color:black;
+    color:white;
+    padding:2px 8px;
+    margin-left:10px;
+    border-radius:10px;
+`;
+
 
 export default DiscoverBooks;

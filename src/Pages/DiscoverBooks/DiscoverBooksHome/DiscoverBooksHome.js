@@ -1,10 +1,10 @@
 import React from 'react';
-import books from '../../../fakeData/books.json';
 import styled from 'styled-components';
 import DisplayBooks from './DisplayBooks/DisplayBooks';
+import { useSelector } from 'react-redux';
 
 const DiscoverBooksHome = () => {
-      
+      const discover = useSelector( (state) => state.books.discover);
       return (
             <div>
                   <SearchBar>
@@ -12,13 +12,12 @@ const DiscoverBooksHome = () => {
                   </SearchBar>
                   <BooksSection>
                         {
-                              books.map( (book) => <DisplayBooks key={book.id} book={book} />)
+                              discover.map( (book) => <DisplayBooks key={book.id} book={book} />)
                         }
                   </BooksSection>
             </div>
       );
 };
-
 
 const SearchBar = styled.div`
       text-align:center;

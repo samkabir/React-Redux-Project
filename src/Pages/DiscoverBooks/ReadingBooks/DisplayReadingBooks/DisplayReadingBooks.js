@@ -2,9 +2,11 @@ import React from 'react';
 import styled from 'styled-components';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 import { useDispatch } from 'react-redux';
-import { addToReadingList } from '../../../../redux/actions/bookAction';
+import { addToReadingList, removeFromReadingList } from '../../../../redux/actions/bookAction';
+import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
+import RemoveCircleOutlineIcon from '@mui/icons-material/RemoveCircleOutline';
 
-const DisplayBooks = ({book}) => {
+const DisplayReadingBooks = ({book}) => {
       const dispatch = useDispatch();
       const {title, author, coverImageUrl, pageCount, publisher, synopsis} = book;
       return (
@@ -21,7 +23,8 @@ const DisplayBooks = ({book}) => {
                               <h5>Page Count: {pageCount}</h5>
                         </Info>
                         <AddIcon>
-                              <button onClick={() => dispatch((addToReadingList(book)))} title="Add to Reading List"><AddCircleIcon style={{fontSize: '40px', display:'flex'}}/></button>
+                              {/* <button onClick={() => dispatch((addToReadingList(book)))} title="Finished Reading"><CheckCircleOutlineIcon style={{fontSize: '40px', display:'flex'}}/></button>
+                              <button onClick={() => dispatch((removeFromReadingList(book)))} title="Remove From Reading List"><RemoveCircleOutlineIcon style={{fontSize: '40px', display:'flex'}}/></button> */}
                         </AddIcon>
                   </OneBook>
             </>
@@ -33,6 +36,7 @@ const AddIcon = styled.div`
             background-color: transparent;
             border-radius:30px;
             cursor: pointer;
+            margin-top: 20px;
       }
 `;
 
@@ -48,4 +52,4 @@ const Info = styled.div`
       padding:0px 20px;
 `;
 
-export default DisplayBooks;
+export default DisplayReadingBooks;
