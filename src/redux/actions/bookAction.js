@@ -11,3 +11,23 @@ export function removeFromReadingList (payload){
             payload
       }
 }
+
+export function addToFinishedList (payload){
+      return {
+            type:'ADD_TO_FINISHED_LIST',
+            payload
+      }
+}
+
+export function addToDiscoveryList (payload){
+      return {
+            type:'ADD_TO_DISCOVER_LIST',
+            payload
+      }
+}
+export function removeFromDiscoveryList (payload){
+      return {
+            type:'REMOVE_FROM_DISCOVER_LIST',
+            payload
+      }
+}

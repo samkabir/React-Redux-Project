@@ -20,7 +20,7 @@ import { useSelector } from 'react-redux';
 const drawerWidth = 200;
 
 const DiscoverBooks = (props) => {
-    const { readingList } = useSelector((state) => state.books);
+    const { discover, readingList, finishedList } = useSelector((state) => state.books);
     const { window } = props;
     const [mobileOpen, setMobileOpen] = React.useState(false);
     const handleDrawerToggle = () => {
@@ -32,9 +32,9 @@ const DiscoverBooks = (props) => {
                   <Toolbar />
                   
                   <List>
-                        <Link style={{textDecoration:'none', color:'black'}} to={`/discoverbooks/`}><ListItem button>Discover Books</ListItem></Link>
+                        <Link style={{textDecoration:'none', color:'black'}} to={`/discoverbooks/`}><ListItem button>Discover Books <Counter>{discover.length}</Counter></ListItem></Link>
                         <Link style={{textDecoration:'none', color:'black'}} to={`/discoverbooks/readingbooks`} ><ListItem button>Reading Books <Counter>{readingList.length}</Counter> </ListItem></Link>
-                        <Link style={{textDecoration:'none', color:'black'}} to={`/discoverbooks/finishedbooks`}><ListItem button>Finished Books <Counter>0</Counter> </ListItem></Link>
+                        <Link style={{textDecoration:'none', color:'black'}} to={`/discoverbooks/finishedbooks`}><ListItem button>Finished Books <Counter>{finishedList.length}</Counter> </ListItem></Link>
                   </List>
 
             </div>

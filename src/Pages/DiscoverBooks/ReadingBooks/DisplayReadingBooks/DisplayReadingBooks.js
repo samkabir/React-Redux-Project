@@ -1,8 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import AddCircleIcon from '@mui/icons-material/AddCircle';
 import { useDispatch } from 'react-redux';
-import { addToReadingList, removeFromReadingList } from '../../../../redux/actions/bookAction';
+import { addToDiscoveryList, addToFinishedList, removeFromReadingList } from '../../../../redux/actions/bookAction';
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import RemoveCircleOutlineIcon from '@mui/icons-material/RemoveCircleOutline';
 
@@ -23,8 +22,8 @@ const DisplayReadingBooks = ({book}) => {
                               <h5>Page Count: {pageCount}</h5>
                         </Info>
                         <AddIcon>
-                              {/* <button onClick={() => dispatch((addToReadingList(book)))} title="Finished Reading"><CheckCircleOutlineIcon style={{fontSize: '40px', display:'flex'}}/></button>
-                              <button onClick={() => dispatch((removeFromReadingList(book)))} title="Remove From Reading List"><RemoveCircleOutlineIcon style={{fontSize: '40px', display:'flex'}}/></button> */}
+                              <button onClick={() => { dispatch((addToFinishedList(book))); dispatch((removeFromReadingList(book.id))); }} title="Finished Reading"><CheckCircleOutlineIcon style={{fontSize: '40px', display:'flex'}}/></button>
+                              <button onClick={() => { dispatch((addToDiscoveryList(book))); dispatch((removeFromReadingList(book.id))); }} title="Remove From Reading List"><RemoveCircleOutlineIcon style={{fontSize: '40px', display:'flex'}}/></button>
                         </AddIcon>
                   </OneBook>
             </>
